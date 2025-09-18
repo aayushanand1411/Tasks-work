@@ -1,0 +1,54 @@
+I have a code to extract images from a pdf , i was getting a problem where flowchart are not getting extracted (vector diagrams) so i change the code so that even vector diagrams also get extracted and store as .png, but the problem i am facing is that the code it converting the whole page into image and storing it, not extracting the vector diagram  from it, so as a result in a pdf of 10 pages consisting of 12 images and 5 flowcharts or vector diagram, its extracting and  storing 12 images and 10 images of individual pages so total 20 images in sequential order,  but it should be 12 images + 5 vectror diagram = 17 images sequentially in the image folder. 
+heres the code:
+import os
+import fitz  # PyMuPDF
+
+def Img_extraction(pdf_path, out_folder):
+    """
+    Extract raster images (>10 KB) and vector diagrams (flowcharts) from PDF.
+    Saves them sequentially (1.png, 2.png, ...) in out_folder.
+    """
+    # Ensure output folder exists
+    os.makedirs(out_folder, exist_ok=True)
+
+    doc = fitz.open(pdf_path)
+    img_counter = 1
+    seen_xrefs = set()  # to avoid duplicate raster images
+
+    for page_num, page in enumerate(doc, start=1):
+        # Extract raster images
+        for img in page.get_images(full=True):
+            xref = img[0]
+            if xref in seen_xrefs:
+                continue
+            seen_xrefs.add(xref)
+
+            base_image = doc.extract_image(xref)
+            img_bytes = base_image["image"]
+            if len(img_bytes) > 10000:  # filter by size
+                img_path = os.path.join(out_folder, f"{img_counter}.png")
+                with open(img_path, "wb") as f:
+                    f.write(img_bytes)
+                img_counter += 1
+
+        # Extract vector diagrams (render page as PNG)
+        pix = page.get_pixmap(matrix=fitz.Matrix(2, 2))  # 2x zoom
+        img_path = os.path.join(out_folder, f"{img_counter}.png")
+        pix.save(img_path)
+        img_counter += 1
+
+    doc.close()
+    print(f"Extraction complete. {img_counter-1} images saved in {out_folder}")
+
+
+
+
+
+pdf_file = "/home/dlpda/Tejawork/kalidas_sir_work/DocVerification/AD2_SRS_2024_080724.pdf"
+output_folder = "/home/dlpda/Aayush/Images"
+
+Img_extraction(pdf_file, output_folder)
+
+
+,,,,
+I  want all the images and vector diagrams get extracted  without repetition and it should be sequential as .png in the folder .
