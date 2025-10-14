@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "doc_type": "SRS",
+    "question": "Is Cover Page of SRS  filled?",
+    "sub_questions": "Is Cover page as per the template?\n\nAre all contents filled accordingly?",
+    "reference_section": "Cover page",
+    "special_instructions": "1. Check carefully if the Cover Page follows the required template i.e Document number, Author, Reviewer, Approval details. Answer strictly Yes if the cover page matches the template, otherwise No. In either case, also provide a brief reason of 30 to 50 words indicating whether all cover page elements are correct or which ones are missing/incorrect.\n\n2. Check carefully if the Cover Page follows the required template i.e Document number, Author, Reviewer, Approval details. Answer strictly Yes if the cover page matches the template, otherwise No. In either case, also provide a brief reason of 30 to 50 words indicating whether all cover page elements are correct or which ones are missing/incorrect.",
+    "created_at": "2025-09-24 11:39:43",
+    "updated_at": "2025-10-13 13:11:20"
+  },
+  {
+    "id": 2,
+    "doc_type": "SRS",
+    "question": "Is Initialization requirements specified?",
+    "sub_questions": "Initializing devices or peripherals\n\nInitialization values\n\nMethod of initialization (through GPIOs or any other method to be specified)\n\n Is the Time within which hardware and software should be initialized after powering on or after giving initialization command mentioned?",
+    "reference_section": "Detailed Software Requirement",
+    "special_instructions": "1. Check if devices or peripherals that need initialization (such as sensors, controllers, communication devices, GPIO peripherals, etc.) are explicitly mentioned.Answer strictly Yes if such devices/peripherals are listed, otherwise No.In either case, also provide a brief reason of 30 to 50 words indicating which devices/peripherals are mentioned or missing.\n\n2. Verify if the initialization values (default settings, register values, voltage levels, memory addresses, etc.) are provided. Answer strictly Yes if initialization values are specified, otherwise No. In either case, also provide a brief reason of 30 to 50 words indicating which values are present or missing.\n\n3. Check whether the method of initialization is described (e.g., using GPIOs, software routines, configuration scripts, hardware switches, etc.). Answer strictly Yes if the method is mentioned, otherwise No. In either case, also provide a brief reason of 30 to 50 words indicating which initialization methods are described or missing.\n\n4. Verify if the time constraints are mentioned \u2014 specifically, the time within which hardware and software should be initialized after powering on or after issuing an initialization command. Answer strictly Yes if time is mentioned, otherwise No. In either case, also provide a brief reason of 30 to 50 words indicating whether timing is specified or missing.",
+    "created_at": "2025-07-18 11:10:25",
+    "updated_at": "2025-10-06 14:42:02"
+  },
+  {
+    "id": 3,
+    "doc_type": "SRS",
+    "question": "Are system states, modes and events specified clearly?",
+    "sub_questions": "Is List of states, modes and events of software mentioned?\n\nIs Description provided by specifying the following for each state, mode and event?\n\nPurpose?\n\nTime for which software should be in the mode?\n\nOperations that Software is expected to perform the state, mode and event along with the rate at which operations should happen?\n\nCalculations/ Computations performed during the state, mode and event?\n\nDiagrams/ Figures specifying the flow of events in states and modes and transition of states, modes?\n\nHow transition is occurred among modes, states and events (Based on command or based on condition or by any other means)\n\nOut of different modes, what is the default mode of software\n\nAre all states, modes, and events distinct from one another?\n\n11. Are environmental conditions for all operating modes specified?\n\n12. Are all unsafe/abnormal states, modes, and events specified along with the recovery mechanism?",
+    "reference_section": "States and Mode of Software",
+    "special_instructions": "1. Check if the list of states, modes, and events of the software (e.g., idle, running, error, sleep mode, recovery, etc.) is included. Answer strictly Yes if a complete list is given, otherwise No. In either case, also provide a brief reason of 30 to 50 words indicating which states, modes, or events are listed or missing.\n\n2. Review if for each state, mode, and event, a description is provided (not just names). Answer strictly Yes if descriptive details are included, otherwise No. In either case, also provide a brief reason of 30 to 50 words indicating which states/modes/events have descriptions or are missing them.\n\n3. Verify if the purpose of each state, mode, and event is clearly explained (e.g., why the state exists, what function it serves). Answer strictly Yes if purpose is included, otherwise No. In either case, also provide a brief reason of 30 to 50 words indicating which purposes are explained or missing.\n\n4. Check if the time duration for which the software should remain in each mode/state/event is specified. Answer strictly Yes if time is mentioned, otherwise No. In either case, also provide a brief reason of 30 to 50 words indicating which durations are specified or missing.\n\n5. Verify if the operations expected in each state, mode, and event are specified, including the rate/frequency of those operations (e.g., polling every 10ms, communication at 1Hz).Answer strictly Yes if operations and their rate are provided, otherwise No. In either case, also provide a brief reason of 30 to 50 words specifying which operations and rates are mentioned or why they are absent.\n\n6. Verify if the calculations or computations performed during each state, mode, and event are described (e.g., mathematical operations, processing steps, or logic executed).Answer strictly Yes if such computations are provided, otherwise No. In either case, also provide a brief reason of 30 to 50 words indicating which computations are described or missing.\n\n7. Check if figures or diagrams are included that specify the flow of events in states and modes and show the transition between states and modes.Answer strictly Yes if such figures are present, otherwise No. In either case, also provide a brief reason of 30 to 50 words indicating whether figures/diagrams are present or missing.\n\n8. Verify if the document explains how transitions occur among modes, states, and events (e.g., based on command, condition, signal, or other mechanism).Answer strictly Yes if the transition mechanism is described, otherwise No. In either case, also provide a brief reason of 30 to 50 words indicating which transitions are explained or missing.\n\n9. Check whether the default mode of the software is clearly identified (the mode in which the system starts or remains if no other mode is triggered).Answer strictly Yes if the default mode is mentioned, otherwise No. In either case, also provide a brief reason of 30 to 50 words indicating whether the default mode is specified or missing.\n\n10. Check if each state, mode, and event is defined distinctly without overlapping descriptions (clear separation between them).Answer strictly Yes if all are distinct, otherwise No. In either case, also provide a brief reason of 30 to 50 words indicating which states/modes/events are overlapping or ambiguous.\n\n11. Verify if the environmental conditions (e.g., temperature, humidity, pressure, voltage range, or external dependencies) for all operating modes are mentioned.Answer strictly Yes if environmental conditions are provided, otherwise No. In either case, also provide a brief reason of 30 to 50 words indicating which environmental conditions are specified or missing.\n\n12. Check if unsafe or abnormal states, modes, or events are specified along with the recovery mechanism (how the system returns to safe or normal state).Answer strictly Yes if both unsafe states and recovery mechanism are mentioned, otherwise No. In either case, also provide a brief reason of 30 to 50 words indicating which unsafe states or recovery details are missing.  ",
+    "created_at": "2025-07-24 10:03:02",
+    "updated_at": "2025-10-06 14:41:40"
+  },
+  {
+    "id": 4,
+    "doc_type": "SRS",
+    "question": "Is each requirement numbered or uniquely identifiable from other requirements?",
+    "sub_questions": "Is each requirement uniquely numbered?\n\nDoes every Unique ID cover only one requirement?\n\nAre requirements redundant ",
+    "reference_section": " Detailed Software Requirement",
+    "special_instructions": "1. Check if each requirement is uniquely numbered according to the specified template (e.g., Req-1, Req-2, etc.). Answer strictly Yes if all requirements are uniquely numbered as per template, otherwise No. In either case, also provide a brief reason of 30 to 50 words indicating which IDs are missing or duplicated.\n\n2. Verify if there are any redundant requirements \u2014 meaning, a requirement already assigned to a unique ID is repeated again under another ID. Answer strictly Yes if redundancy exists, otherwise No. In either case, also provide a brief reason of 30 to 50 words indicating which requirements are repeated or confirm no redundancy.\n\n3. Check if every unique ID describes only one requirement (it should not combine multiple requirements under one ID). Answer strictly Yes if each unique ID has exactly one requirement, otherwise No. In either case, also provide a brief reason of 30 to 50 words indicating which IDs combine multiple requirements or confirm all are single. ",
+    "created_at": "2025-07-18 14:51:12",
+    "updated_at": "2025-10-06 14:41:24"
+  },
+  {
+    "id": 5,
+    "doc_type": "SRS",
+    "question": "Is each requirement written in clear, concise, unambiguous language ?",
+    "sub_questions": "Is the English language used to convey each requirement clear, unambiguous, and grammatically correct?\n\nDoes any requirement contradict another requirement directly or indirectly?\n\nDoes the requirement sentence contain unnecessary words irrelevant to the requirement?\n\nDo requirement details (parameters, rate of operation, etc.) contradict with other sections/diagrams/reference documents?\n\nDoes Implementation of requirement such as way of operation, source and destination of commands etc., contradict with any other section/ diagram/reference documents?",
+    "reference_section": " Hardware Requirements\nStates and Mode of Software\n Detailed Software Requirement\n Timing Requirements\n Loadable Data Requirements\n Internal and External Interface Requirement\n Safety & Security Requirements\n Software Testing Requirements",
+    "special_instructions": "1. Check if each requirement is written clearly in proper English, free from grammatical errors, and with no ambiguity in the sentence. Answer strictly Yes if all requirements are clearly written, otherwise No. In either case, also provide a brief reason of 30 to 50 words indicating which requirements have errors or confirm clarity.\n\n2. Verify if any requirement contradicts another requirement, either directly or indirectly. Answer strictly Yes if contradictions exist, otherwise No. In either case, also provide a brief reason of 30 to 50 words indicating which requirements contradict each other or confirm consistency.\n\n3. Check if the requirement is written concise, without unnecessary words that do not add meaning or significance to the requirement. \nAnswer strictly Yes if all requirements are concise, otherwise No. In either case, also provide a brief reason of 30 to 50 words indicating which requirements contain extra wording or confirm conciseness.\n\n4. Verify if the requirement details (parameters, rates of operation, thresholds, etc.) are consistent with other sections, diagrams, or reference documents. Answer strictly Yes if contradictions exist, otherwise No. In either case, also provide a brief reason of 30 to 50 words indicating which details are inconsistent or confirm consistency.\n\n5. Check if the implementation details of requirements (way of operation, source/destination of commands, etc.) are consistent with other sections, diagrams, or reference documents. Answer strictly Yes if contradictions exist, otherwise No. In either case, also provide a brief reason of 30 to 50 words indicating where inconsistencies occur or confirm consistency.",
+    "created_at": "2025-08-22 14:57:14",
+    "updated_at": "2025-10-06 14:41:07"
+  },
+  {
+    "id": 6,
+    "doc_type": "SRS",
+    "question": "Is each requirement specified  correctly, completely and accurately?",
+    "sub_questions": "Is each requirement specified  correctly, completely and accurately?",
+    "reference_section": "",
+    "special_instructions": "1. Review if each requirement is specified correctly, completely, and accurately \u2014 meaning it fully captures what is intended, does not omit important details, and does not contain errors. Answer strictly Yes if all requirements are correct, complete, and accurate, otherwise No. In either case, also provide a brief reason of 30 to 50 words indicating which requirements are incomplete/incorrect or confirm correctness. \n\n",
+    "created_at": "2025-09-10 14:44:50",
+    "updated_at": "2025-09-26 15:52:41"
+  },
+  {
+    "id": 7,
+    "doc_type": "SRS",
+    "question": "Is each requirement Verifiable and Testable?",
+    "sub_questions": "Is result/output of the process to achieve requirement be recorded/logged or viewable ?\n\nDoes the requirement specify any quantification such that it is verifiable? (unlike generalized requirement without any quantification) ?",
+    "reference_section": "",
+    "special_instructions": "1. Check if the result or output of the process to achieve the requirement is specified to be recorded, logged, or viewable (for verification or traceability). Answer strictly Yes if recording/logging/viewing of results is mentioned, otherwise No. In either case, also provide a brief reason of 30 to 50 words indicating which outputs are recorded or missing.\n\n2. Verify if the requirement includes quantification (e.g., numerical values, measurable limits, performance targets) such that it is verifiable. Generalized, vague requirements without quantification should not qualify. Answer strictly Yes if quantification is provided, otherwise No. In either case, also provide a brief reason of 30 to 50 words indicating which requirements are quantified or missing values.",
+    "created_at": "2025-08-22 11:51:16",
+    "updated_at": "2025-09-26 15:54:35"
+  },
+  {
+    "id": 8,
+    "doc_type": "SRS",
+    "question": "Is each requirement Traceable and consistent?",
+    "sub_questions": "Are all requirements with unique ID covered in Traceability Matrix Table?\n\nIs unique ID of every requirement mapped to SyRS/ICD?",
+    "reference_section": "Traceability Matrix",
+    "special_instructions": "1. Check if all requirements with unique IDs are included in the Traceability Matrix Table (no missing entries). Answer strictly Yes if all requirements are covered, otherwise No. In either case, also provide a brief reason of 30 to 50 words indicating whether all IDs are present or which ones are missing.\n\n2. Verify if the unique ID of every requirement is mapped to its corresponding SyRS (System Requirements Specification) / ICD (Interface Control Document) in the traceability section. Answer strictly Yes if mapping exists for all, otherwise No. In either case, also provide a brief reason of 30 to 50 words indicating whether all mappings are correct or which mappings are missing.",
+    "created_at": "2025-08-22 14:46:44",
+    "updated_at": "2025-10-06 14:40:25"
+  },
+  {
+    "id": 9,
+    "doc_type": "SRS",
+    "question": "Are the requirements feasible in the technical environment?  viz.,  i) Hardware,  ii) Operating System  and iii) development environment ",
+    "sub_questions": "Are the requirements feasible in the technical environment?  viz.,  i) Hardware,  ii) Operating System  and iii) development environment ",
+    "reference_section": "",
+    "special_instructions": "1. Verify if the requirements are feasible within the given technical environment, including: Hardware feasibility, Operating System feasibility, Development environment feasibility. Answer strictly Yes if the requirements are technically feasible in all aspects, otherwise No. In either case, also provide a brief reason of 30 to 50 words indicating whether feasibility is established or what is missing",
+    "created_at": "2025-09-10 14:45:54",
+    "updated_at": "2025-09-26 15:59:05"
+  },
+  {
+    "id": 10,
+    "doc_type": "SRS",
+    "question": "Are all Functional requirements covered? ",
+    "sub_questions": "Are all functional requirements covered?",
+    "reference_section": "",
+    "special_instructions": "1. Check if all functional requirements are identified and covered in the document. Answer strictly Yes if all functional requirements are covered, otherwise No. In either case, also provide a brief reason of 30 to 50 words indicating whether coverage is complete or which functions are missing. ",
+    "created_at": "2025-09-17 10:18:04",
+    "updated_at": "2025-09-26 16:00:06"
+  },
+  {
+    "id": 11,
+    "doc_type": "SRS",
+    "question": "Are all Interface Requirements (external and Internal) identified and specified?",
+    "sub_questions": "Are all interface requirements (external and internal) identified and specified, and do their descriptions match across all related sections?",
+    "reference_section": "Internal and External Interface Requirement",
+    "special_instructions": "1. Verify if all interface requirements (external and internal) are identified and specified, and whether the description matches across: Hardware diagrams, Hardware requirements, Detailed software requirements, Loadable data requirements, Internal and external interface requirements. Answer strictly Yes if all are identified and consistent, otherwise No. In either case, also provide a brief reason of 30 to 50 words indicating whether consistency is maintained or where mismatches occur. ",
+    "created_at": "2025-09-17 10:20:39",
+    "updated_at": "2025-10-06 14:39:46"
+  },
+  {
+    "id": 12,
+    "doc_type": "SRS",
+    "question": "Is Interface Control documented? Is it as per RCI\u2019 ICD format?",
+    "sub_questions": "12. Is Interface Control documented? Is it as per RCI\u2019 ICD format?",
+    "reference_section": "",
+    "special_instructions": "1. Check if Interface Control is documented, and whether it follows the RCI\u2019s ICD format. Answer strictly Yes if Interface Control is documented as per RCI ICD format, otherwise No. In either case, also provide a brief reason of 30 to 50 words indicating whether compliance is achieved or what is missing. ",
+    "created_at": "2025-09-17 10:21:59",
+    "updated_at": "2025-09-26 16:03:15"
+  },
+  {
+    "id": 13,
+    "doc_type": "SRS",
+    "question": "Is Data Storage and Retention Requirements (in terms of stack size and memory) specified?",
+    "sub_questions": "Are Data Storage and Retention Requirements specified, including stack size, memory, or data storage/retention details?\n\nIf Data Storage and Retention Requirements are mentioned, are mechanisms and timing requirements for storage and retention of data specified?",
+    "reference_section": " Product Description\nAssumptions\nHardware Requirements\nStates and Mode of Software\nDetailed Software Requirement\nTiming Requirements\n Safety & Security Requirements",
+    "special_instructions": "1. Verify if Data Storage and Retention Requirements are specified (e.g., stack size, memory requirements, data storage/retention descriptions). Answer strictly Yes if such requirements exist, otherwise No. In either case, also provide a brief reason of 30 to 50 words indicating what is specified or what is missing.\n\n2. Check if, when Data Storage and Retention Requirements are specified, the mechanisms and timing requirements for storage and retention of data are also described. Answer strictly Yes if mechanisms/timings are specified, otherwise No. In either case, also provide a brief reason of 30 to 50 words indicating whether they are present or missing. ",
+    "created_at": "2025-09-17 10:24:06",
+    "updated_at": "2025-10-06 14:39:16"
+  },
+  {
+    "id": 14,
+    "doc_type": "SRS",
+    "question": "Are Exception Handling/Error Management specified? (Hardware faults, I/O errors, computational errors, processing overload, buffer overflow, events failing to occur, out-of sequence events)",
+    "sub_questions": "Is Exception Handling/Error Management specified for hardware faults, I/O errors, computational errors, overloads, buffer overflows, missing events, or out-of-sequence events?",
+    "reference_section": " Product Description\nHardware Requirements\n Safety and Security Requirements\nGeneral Constraints",
+    "special_instructions": "1. Verify if Exception Handling/Error Management is specified for cases like hardware faults, I/O errors, computational errors, processing overload, buffer overflow, events failing to occur, and out-of-sequence events. Answer strictly Yes if exception handling/error management is described, otherwise No. In either case, also provide a brief reason of 30 to 50 words indicating whether all cases are covered or which are missing. ",
+    "created_at": "2025-09-17 10:26:19",
+    "updated_at": "2025-10-06 14:38:53"
+  },
+  {
+    "id": 15,
+    "doc_type": "SRS",
+    "question": "Are Recovery (Fault Tolerant) Requirements specified?",
+    "sub_questions": "Are Recovery (Fault Tolerant) Requirements specified for handling malfunctions or unresponsive states?",
+    "reference_section": "Product Description\nHardware Requirements\nSafety & Security Requirements\nGeneral Constraints",
+    "special_instructions": "1. Check if Recovery (Fault Tolerant) Requirements are specified \u2014 describing how software/system should recover if it malfunctions, becomes unresponsive, or stops performing tasks. Answer strictly Yes if recovery/fault tolerance is described, otherwise No. In either case, also provide a brief reason of 30 to 50 words indicating whether recovery is detailed or what is missing. ",
+    "created_at": "2025-09-17 10:28:57",
+    "updated_at": "2025-10-06 14:38:32"
+  },
+  {
+    "id": 16,
+    "doc_type": "SRS",
+    "question": "Are Expected response time, Periodicity, transfer (I/O), and system throughput, bandwidth etc.) specified?",
+    "sub_questions": "Are expected response time, periodicity, transfer (I/O), system throughput, and bandwidth requirements specified?\n\nAre there contradictions in expected response time, periodicity, transfer (I/O), throughput, or bandwidth across different sections?",
+    "reference_section": " Product Description\n Assumptions\n Hardware Requirements\n States and Mode of Software\n Detailed Software Requirements\n Timing Requirements\n Safety & Security Requirements\n Software Testing Requirements\n General Constraints",
+    "special_instructions": "1. Verify if performance-related requirements are specified, including expected response time, periodicity, data transfer (I/O), system throughput, and bandwidth. Answer strictly Yes if these are specified, otherwise No. In either case, also provide a brief reason of 30 to 50 words indicating whether all are covered or which are missing. \n\n2. Check if the performance-related requirements (response time, periodicity, transfer (I/O), throughput, bandwidth) have any contradictions among the different sections. Answer strictly Yes if contradictions exist, otherwise No. In either case, also provide a brief reason of 30 to 50 words indicating whether contradictions are found or confirming consistency. ",
+    "created_at": "2025-09-17 11:22:01",
+    "updated_at": "2025-10-06 14:38:12"
+  },
+  {
+    "id": 17,
+    "doc_type": "SRS",
+    "question": "Are loadable data requirements specified?",
+    "sub_questions": "Are loadable data requirements specified (e.g., data to be loaded before system startup)?",
+    "reference_section": " Assumptions\n Detailed Software Requirement",
+    "special_instructions": "1. Check if there are any requirements specifying loadable data (for example, data that must be loaded before switching on the system on which the software resides). Answer strictly Yes if such loadable data requirements are specified, otherwise No. In either case, also provide a brief reason of 30 to 50 words indicating whether such requirements exist or are absent. ",
+    "created_at": "2025-09-17 11:23:04",
+    "updated_at": "2025-10-06 14:37:43"
+  },
+  {
+    "id": 18,
+    "doc_type": "SRS",
+    "question": "Are Quality Assurance Requirements Specified?",
+    "sub_questions": "Are Quality Assurance (QA) requirements specified (e.g., standards or compliance criteria)?",
+    "reference_section": "Product Description\n Safety & Security Requirements \nSoftware Testing Requirements\n General Constraints",
+    "special_instructions": "1. Verify if Quality Assurance (QA) requirements are specified (for example, standards, testing benchmarks, compliance criteria for QA activities). Answer strictly Yes if QA requirements or standards are specified, otherwise No. In either case, also provide a brief reason of 30 to 50 words indicating whether QA criteria are covered or missing. ",
+    "created_at": "2025-09-17 11:24:17",
+    "updated_at": "2025-10-06 14:37:07"
+  }
+]
