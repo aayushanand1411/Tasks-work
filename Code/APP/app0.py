@@ -130,7 +130,7 @@ def dict_to_markdown4(question, prompt, data, iter_count):
     return markdown
 
 
-def dict_to_markdown(question, Sub, data, iter_count,main_count):
+def dict_to_markdown5(question, Sub, data, iter_count,main_count):
     # Initialize an empty list to store DataFrames
     # Append row
     if iter_count == 1:
@@ -181,6 +181,65 @@ def dict_to_markdown(question, Sub, data, iter_count,main_count):
         {html_table}
         <div>
         """
+    st.session_state["table_placeholder"].markdown(styled_html, unsafe_allow_html=True)
+    return df
+
+
+def dict_to_markdown(question, Sub, data, iter_count,main_count):
+    # Initialize an empty list to store DataFrames
+    # Append row
+    if iter_count == 1:
+        temp = f"{question}\n {Sub}"
+        st.session_state["table_rows"].append([main_count, question,iter_count,Sub, data['Answer'], data['Reason']])
+    else:
+        st.session_state["table_rows"].append(["","",iter_count,Sub, data['Answer'], data['Reason']])
+
+    # Convert to DataFrame
+    df = pd.DataFrame(
+        st.session_state["table_rows"],
+        columns=["Main No.", "Main Question","Sub no.", "Sub-Question", "Answer", "Reason"]
+        #columns = ["Main No.", "Question", "Sub no.", "Sub-Question", "Answer", "Score"]
+    )
+    # df.index = df.index + 1
+    # df.index.name = "Sr No."
+    df["Main No."] = df["Main No."].apply(lambda x: f"<b>{x}</b>" if x != "" else "")
+    html_table = df.to_html(index=False, escape=False)
+    # Add CSS for custom column widths
+    styled_html = f"""
+    <div style="max-height: 600px; overflow-y: auto; border: 1px solid #ddd;">
+        <style>
+            table {{
+                width: 100%;
+                border-collapse: collapse;
+                font-family: 'Segoe UI', sans-serif;
+            }}
+            th, td {{
+                border: 1px solid #ccc;
+                padding: 6px 10px;
+                text-align: left;
+                vertical-align: top;
+            }}
+            th {{
+                background-color: #f5f5f5;
+                font-weight: bold;
+                text-align: center;
+                position: sticky;      /*  Makes header stick */
+                top: 0;                /*  Stick to top of scroll container */
+                z-index: 2;            /*  Ensure header stays above rows */
+            }}
+            /* Column widths */
+            th:nth-child(1), td:nth-child(1) {{ width: 10%; text-align: center; }}
+            th:nth-child(2), td:nth-child(2) {{ width: 20%; }}
+            th:nth-child(3), td:nth-child(3) {{ width: 10%; text-align: center; }}
+            th:nth-child(4), td:nth-child(4) {{ width: 20%; }}
+            th:nth-child(5), td:nth-child(5) {{ width: 10%; text-align: center; }}
+            th:nth-child(6), td:nth-child(6) {{ width: 30%; }}
+            tr:nth-child(even) {{ background-color: #fafafa; }}
+        </style>
+        {html_table}
+    </div>
+    """
+
     st.session_state["table_placeholder"].markdown(styled_html, unsafe_allow_html=True)
     return df
 
@@ -716,25 +775,24 @@ elif page == "Verify SRS":
     x=0
      # 🟢 Initialize weights (example)
     weights = [
-    [2.08333333, 2.91666667],  # Row 1, sum=5
-    [0.41666667, 0.83333333, 1.25, 1.5],  # Row 2, sum=5
-    [0.03205128, 0.06410256, 0.09615385, 0.12820513, 0.16025641, 0.19230769,
-     0.22435897, 0.25641026, 0.28846154, 0.32051282, 0.3525641, 0.38461538],  # Row 3, sum=5
-    [0.83333333, 1.66666667, 2.5],  # Row 4, sum=5
-    [0.33333333, 0.66666667, 1.0, 1.33333333, 1.66666667],  # Row 5, sum=5
-    [5.0],  # Row 6, sum=5
-    [2.08333333, 2.91666667],  # Row 7, sum=5
-    [2.08333333, 2.91666667],  # Row 8, sum=5
-    [5.0],  # Row 9, sum=5
-    [5.0],  # Row 10, sum=5
-    [5.0],  # Row 11, sum=5
-    [5.0],  # Row 12, sum=5
-    [2.08333333, 2.91666667],  # Row 13, sum=5
-    [5.0],  # Row 14, sum=5
-    [5.0],  # Row 15, sum=5
-    [2.08333333, 2.91666667],  # Row 16, sum=5
-    [5.0],  # Row 17, sum=5
-    [5.0]   # Row 18, sum=5
+    [4.17, 5.83],  # Row 1,   
+    [0.83, 1.67, 2.5, 3.0],  # Row 2,  
+    [1, 1, 1, 1, 1, 1, 1, 1, .5, .5, .5 , .5],  # Row 3, 
+    [1.67, 3.33, 5.0],  # Row 4,  
+    [0.67, 1.33, 2.0, 2.67, 3.33],  # Row 5,   
+    [10.0],  # Row 6,   
+    [4.17, 5.83],  # Row 7,  
+    [4.17, 5.83],  # Row 8,  
+    [10.0],  # Row 9,   
+    [10.0],  # Row 10,   
+    [10.0],  # Row 11,   
+    [10.0],  # Row 12,   
+    [4.17, 5.83],  # Row 13,   
+    [10.0],  # Row 14,   
+    [10.0],  # Row 15,   
+    [4.17, 5.83],  # Row 16,   
+    [10.0],  # Row 17,   
+    [10.0]   # Row 18,   
 ]
 
      # 🟢 Initialize results array (same shape)
@@ -835,7 +893,7 @@ elif page == "Verify SRS":
                     current_results = []
                     for j in range(len(sub_q)):
                         # print(f'\n {st.session_state['table_rows']} \n')
-                        final_prompt = f"""
+                        final_prompt2 = f"""
                                         #########################p
                                         Text: {content_to_search} 
                                         #########################
@@ -843,6 +901,34 @@ elif page == "Verify SRS":
                                         You are given a document content in the above `Text` {prompts[j]}
                                         Return the response strictly in the JSON format: {{ "Answer": "Yes/No", "Reason": "..." }}
                                         """
+                        final_prompt = f"""
+                                        #########################
+                                        Text: {content_to_search}
+                                        #########################
+                                        Instructions:
+                                        You are given a document content in the above `Text`.
+
+                                        Now, follow the checklist below carefully:
+                                        {prompts[j]}
+
+                                        Your task:
+                                        Evaluate the document *practically*, not rigidly. 
+                                        If the information seems partially mentioned, inferred, or described indirectly, still consider it as **"Partially Yes"** (not strictly No).
+                                        Be lenient where technical meaning is clear even if phrasing differs.
+
+                                        Respond in **JSON** format as:
+                                        {{
+                                        "Answer": "Yes" / "Partially Yes" / "No",
+                                        "Reason": "Provide a clear, concise explanation (40–60 words) describing which aspects are mentioned, implied, or missing. Be objective and avoid repetition."
+                                        }}
+
+                                        Guidelines:
+                                        - If the content explicitly meets the criteria → "Yes".
+                                        - If it somewhat covers or implies it → "Partially Yes".
+                                        - If it is missing or unrelated → "No".
+                                        - Maintain neutral tone and professional phrasing.
+                                        """
+
 
                         resp = query_ollama(final_prompt)
                         iteration_counter += 1
