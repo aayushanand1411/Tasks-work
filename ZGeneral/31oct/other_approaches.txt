@@ -1,0 +1,117 @@
+Excellent — that’s the right mindset 👏
+You’re already testing multiple query strategies (Approaches 0–3) to address LLM nondeterminism, which is the most practical way to stabilize responses. Since you also have ample compute and no time constraints, you can go further. Let’s discuss systematic and advanced approaches you can add — from simple sampling to model-level control — so you can test and find the most reliable one.
+
+🔹 Root Cause Reminder
+
+LLMs are nondeterministic because of:
+
+Sampling randomness (temperature, top-p, etc.).
+
+Latent ambiguity in the prompt itself.
+
+Internal stochasticity in generation (even at temp=0, due to parallel decoding or GPU race conditions).
+
+Hidden contextual variability (slight changes in whitespace, order, or hidden states can alter token paths).
+
+✅ Approach 4 – Ensemble Averaging with Weighted Voting
+
+Similar to your Approach 1, but use reason similarity weighting:
+
+Run the same prompt 5–7 times.
+
+Use cosine similarity (via embedding model like text-embedding-3-small) between all reasons.
+
+Cluster similar answers and pick the cluster with maximum coherence.
+
+Regenerate a concise explanation of the cluster centroid reasoning via LLM.
+
+Why better: You capture both textual consistency and semantic alignment, not just majority of “Yes/No”.
+
+✅ Approach 5 – Self-Consistency Decoding (borrowed from reasoning tasks)
+
+Paper-inspired method (used in CoT reliability):
+
+Generate n reasoning paths (say 10) with temperature=0.7.
+
+Parse each to extract final “Yes/No”.
+
+Choose the majority label.
+
+Pass all the reasoning snippets to LLM again:
+“Summarize the most consistent reasoning among the following justifications…”
+
+Why: This method improves factual grounding and reduces hallucinations.
+Code-wise: It’s almost like Approach-1 but collects and summarizes reasoning traces, not just votes.
+
+✅ Approach 6 – Logit or Token-Level Determinism
+
+If you can modify the model or use a local engine (since you mentioned Ollama and multiple GPUs):
+
+Use temperature=0.0 and top-p=0.0 to force the greedy decoding path.
+
+If the model still differs, set seed=constant in Ollama (check config: OLLAMA_SEED or via CLI --seed).
+
+Some local engines allow beam search (beam width = 3–5) → pick beam with most consistent “Yes/No”.
+
+Why: Reduces randomness at the decoding layer itself.
+
+✅ Approach 7 – Prompt Determinism Reinforcement
+
+You can reframe the prompt to make answers more discrete:
+
+“Answer strictly with Yes or No followed by a short factual reason (max 50 words). Do not include uncertainty.
+If ambiguous, choose the answer that is most supported by the text.”
+
+Also, add example pairs of clear Yes/No and reasoning.
+LLMs become more stable when you define “decision boundaries” through few-shot patterns.
+
+✅ Approach 8 – Cross-Model Agreement
+
+If resources are not a problem:
+
+Query 2 or 3 different models (e.g., mistral, llama3, gemma2).
+
+Compare their outputs.
+
+If 2/3 models agree → accept that answer; otherwise → regenerate through your main model.
+
+Why: Cross-model ensemble improves robustness against single-model noise.
+
+✅ Approach 9 – Consistency-Checking Post Filter
+
+After getting the model output (say “Yes”), verify it using a follow-up query:
+
+“Given this content and the answer ‘Yes’, is the reasoning logically consistent and supported by the text? Answer with a probability between 0 and 1.”
+
+If below threshold (e.g. <0.8), regenerate the response.
+
+Why: This turns LLM into its own verifier, reducing spurious flips.
+
+✅ Approach 10 – Persistent Memory Check
+
+Keep a log of all 43 questions and their responses.
+When re-running, instead of regenerating blindly:
+
+Compare new answers to previous ones.
+
+If mismatch → ask model:
+
+“Previously, the answer was ‘No’ with reason [...]. You now said ‘Yes’. Given the same content, explain which answer is more consistent.”
+
+This can stabilize future runs and reduce contradictions across sessions.
+
+✅ Suggested Plan for You
+Approach	Description	Expected Stability	Cost	Notes
+0	Single run	🔴 Low	🟢 Low	Baseline
+1	5-vote majority	🟡 Medium	🟡 Medium	Simple ensemble
+2	Yes→Reason	🟢 Medium	🟡 Medium	Sequential reasoning
+3	Reason→Yes	🟢 Medium	🟡 Medium	Opposite sequence
+4	Weighted semantic vote	🟢🟢 High	🔴 High	Best for reliability
+5	Self-consistency	🟢🟢 High	🔴 High	Great for reasoning tasks
+6	Logit determinism	🟢🟢🟢 Very High	🟢 Low	If you control model
+7	Structured prompt	🟢🟢 High	🟢 Low	Always combine with others
+8	Cross-model	🟢🟢🟢 Very High	🔴 Very High	Needs multiple models
+9	Verifier filter	🟢🟢 High	🟡 Medium	Good for contradiction removal
+10	Memory-consistency	🟢🟢🟢 Very High	🟡 Medium	Long-term stability
+
+Would you like me to show the full Python implementation for one or two of these advanced strategies — say Approach 4 (semantic voting) and Approach 5 (self-consistency decoding) — using your existing query_ollama setup?
