@@ -1,1 +1,29 @@
-hi
+from ultralytics import YOLO
+import os
+
+# === USER INPUTS ===
+model_path = r"/path/to/best.pt"             # <-- your trained model (best.pt)
+test_images = r"/path/to/test_images"        # <-- folder with test images
+save_dir = r"/path/to/save/test_results"     # <-- where to save predictions
+
+# Create save directory if not exists
+os.makedirs(save_dir, exist_ok=True)
+
+# === LOAD MODEL ===
+model = YOLO(model_path)
+
+# === RUN INFERENCE ===
+results = model.predict(
+    source=test_images,      # folder with test images
+    imgsz=1280,              # match your training size
+    conf=0.25,               # confidence threshold
+    save=True,               # save predictions
+    save_txt=True,           # also save results in YOLO format
+    project=save_dir,        # main results folder
+    name="predictions",      # subfolder for this run
+    device=0                 # GPU id (use 'cpu' if no GPU)
+)
+
+print("✅ Inference complete! Results saved to:")
+print(os.path.join(save_dir, "predictions"))
+
