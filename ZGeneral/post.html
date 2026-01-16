@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poster - Aayush Anand</title>
+    <style>
+        :root {
+            --primary-blue: #003366; /* RCI/DRDO Deep Blue */
+            --accent-blue: #0056b3;
+            --text-dark: #222;
+            --bg-grey: #f0f2f5;
+            --card-bg: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e0e0e0;
+            color: var(--text-dark);
+            /* A0 Size Ratio usually */
+            width: 1600px; 
+            height: 1200px; /* Adjust for landscape A0/A1 ratio */
+            margin: auto;
+            background: white;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+        }
+
+        /* --- HEADER SECTION --- */
+        header {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 20px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 5px solid #cc0000; /* Subtle accent */
+        }
+
+        .logo-placeholder {
+            width: 100px;
+            height: 100px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--primary-blue);
+            border: 2px solid white;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        .header-content {
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            margin: 10px 0;
+            font-weight: 300;
+            color: #e0e0e0;
+        }
+
+        .authors {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-top: 10px;
+            background: rgba(255,255,255,0.1);
+            display: inline-block;
+            padding: 5px 20px;
+            border-radius: 20px;
+        }
+
+        /* --- GRID LAYOUT --- */
+        .container {
+            display: grid;
+            grid-template-columns: 30% 40% 30%;
+            gap: 20px;
+            padding: 20px;
+            height: calc(100% - 180px); /* Height minus header */
+        }
+
+        .column {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* --- CARDS --- */
+        .card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            overflow: hidden;
+            border: 1px solid #ddd;
+        }
+
+        .card-header {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 10px 15px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+        }
+        
+        .card-header::before {
+            content: '■';
+            margin-right: 10px;
+            color: #ffcc00; /* Gold bullet */
+        }
+
+        .card-body {
+            padding: 15px;
+            font-size: 1rem;
+            line-height: 1.4;
+        }
+
+        ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        
+        li {
+            margin-bottom: 6px;
+        }
+
+        /* --- DIAGRAM STYLES (CSS Flowchart) --- */
+        .flow-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px dashed #ccc;
+        }
+
+        .flow-step {
+            background: white;
+            border: 2px solid var(--primary-blue);
+            color: var(--primary-blue);
+            padding: 10px;
+            width: 90%;
+            text-align: center;
+            border-radius: 5px;
+            font-weight: bold;
+            position: relative;
+        }
+
+        .flow-arrow {
+            font-size: 20px;
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+
+        .highlight-box {
+            background: #e6f7ff;
+            border-left: 5px solid var(--accent-blue);
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        /* --- RESULTS TABLE --- */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+        th {
+            background-color: #f2f2f2;
+            color: var(--primary-blue);
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-placeholder">DRDO LOGO</div>
+        
+        <div class="header-content">
+            <h1>LLM-Based Web Application for SQAG Documents Verification</h1>
+            <div class="subtitle">Modular AI Pipeline for SRS Cleaning, Image-to-Text Conversion, Semantic Section Mapping & Compliance Verification</div>
+            <div class="authors">
+                Presented by: <strong>Aayush Anand</strong> (M.Tech AI) &nbsp;|&nbsp; 
+                Guided by: <strong>A. Kalidasu</strong>, Scientist ‘E’
+            </div>
+            <div style="margin-top: 5px; font-size: 0.9rem; opacity: 0.9;">Research Centre Imarat (RCI), DRDO</div>
+        </div>
+
+        <div class="logo-placeholder">RCI LOGO</div>
+    </header>
+
+    <div class="container">
+        <div class="column">
+            
+            <div class="card">
+                <div class="card-header">Overview</div>
+                <div class="card-body">
+                    <strong>Software Quality Assurance Group (SQAG)</strong> reviews technical documents (SRS, SDD, ICD).
+                    <div class="highlight-box">
+                        Current manual review is slow, inconsistent, and suffers from template errors.
+                    </div>
+                    This project proposes an <strong>AI-assisted screening system</strong> to standardize reviews and reduce burden.
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">Problem Statement</div>
+                <div class="card-body">
+                    <ul>
+                        <li><strong>Time-Consuming:</strong> Manual verification is repetitive and slow.</li>
+                        <li><strong>Inconsistency:</strong> Varied document formats and terminology.</li>
+                        <li><strong>Visual Blindspots:</strong> Images/Diagrams are not machine-readable.</li>
+                        <li><strong>High Fatigue:</strong> Cognitive load leads to human error.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">Objectives</div>
+                <div class="card-body">
+                    <ul>
+                        <li>Develop an <strong>LLM-based web app</strong> for SRS verification.</li>
+                        <li>Build a <strong>modular AI pipeline</strong> (Cleaning → Mapping → Checking).</li>
+                        <li><strong>Multimodal understanding</strong> of diagrams using Gemma 3.</li>
+                        <li>Semantic section mapping to standard SQAG templates.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">Motivation</div>
+                <div class="card-body">
+                    To ensure faster compliance checks aligned with RCI standards while maintaining a "Human-in-the-Loop" approach. The system <em>assists</em>, not replaces, the reviewer.
+                </div>
+            </div>
+
+        </div>
+
+        <div class="column">
+            
+            <div class="card">
+                <div class="card-header">Proposed Solution</div>
+                <div class="card-body">
+                    An end-to-end pipeline that cleans PDFs, converts images to text, maps sections semantically, and evaluates checklist compliance using LLM reasoning.
+                </div>
+            </div>
+
+            <div class="card" style="flex-grow: 1;">
+                <div class="card-header">Methodology (3-Phase Pipeline)</div>
+                <div class="card-body" style="background: #fff;">
+                    
+                    <div class="flow-container">
+                        
+                        <div style="width:100%; text-align:left; color:#666; font-weight:bold;">PHASE I: DATA INGESTION</div>
+                        <div class="flow-step">
+                            📄 PDF Upload & Header/Footer Removal<br>
+                            <span style="font-size:0.8rem; color:#555;">(Docling Preprocessing)</span>
+                        </div>
+                        <div class="flow-arrow">⬇</div>
+                        <div class="flow-step" style="background:#f0f8ff;">
+                            🖼️ Image Captioning & Reintegration<br>
+                            <span style="font-size:0.8rem; color:#555;">(Gemma 3: 4B Multimodal LLM)</span>
+                        </div>
+
+                        <div class="flow-arrow">⬇</div>
+                        <div style="width:100%; text-align:left; color:#666; font-weight:bold; margin-top:10px;">PHASE II: STRUCTURAL STANDARDIZATION</div>
+                        <div class="flow-step">
+                            🗂️ Semantic Section Mapping<br>
+                            <span style="font-size:0.8rem; color:#555;">(SentenceTransformers + Fuzzy Matching)</span>
+                        </div>
+
+                        <div class="flow-arrow">⬇</div>
+                        <div style="width:100%; text-align:left; color:#666; font-weight:bold; margin-top:10px;">PHASE III: AUTOMATED VERIFICATION</div>
+                        <div class="flow-step" style="border-color: #d9534f; color: #d9534f;">
+                            🤖 Checklist Compliance Check<br>
+                            <span style="font-size:0.8rem; color:#555;">(GLM-4 Reasoning & Scoring)</span>
+                        </div>
+                        <div class="flow-arrow">⬇</div>
+                        <div class="flow-step" style="background: #28a745; color: white; border: none;">
+                            ✅ Streamlit Dashboard Report
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">System Implementation</div>
+                <div class="card-body">
+                    <p><strong>Tech Stack:</strong> Python, Streamlit, Docling, Gemma 3, GLM-4.</p>
+                    <p><strong>Workflow:</strong> The user uploads a PDF. The system parses it, captions images, maps sections to the SQAG template, runs the checklist, and outputs a scored JSON report.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="column">
+            
+            <div class="card">
+                <div class="card-header">Results & Evaluation</div>
+                <div class="card-body">
+                    Tested on <strong>7 SRS Documents</strong>.
+                    <table>
+                        <tr>
+                            <th>Metric</th>
+                            <th>Performance</th>
+                        </tr>
+                        <tr>
+                            <td>Heading Mapping</td>
+                            <td><strong>100% Accuracy</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Image Reintegration</td>
+                            <td><strong>100% Success</strong></td>
+                        </tr>
+                        <tr>
+                            <td>LLM Reasoning</td>
+                            <td>80–90% Consistency</td>
+                        </tr>
+                        <tr>
+                            <td>Review Time</td>
+                            <td>Reduced (Hours → Mins)</td>
+                        </tr>
+                    </table>
+                    <p style="margin-top:10px;"><em>System shows high repeatability and stability in real-world tests.</em></p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">Challenges</div>
+                <div class="card-body">
+                    <ul>
+                        <li>Handling irregular SRS templates & noisy layouts.</li>
+                        <li>Complex multi-part diagrams.</li>
+                        <li>Preventing LLM hallucination (Grounding).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">Future Scope</div>
+                <div class="card-body">
+                    <ul>
+                        <li>Support for SDD, ICD, and STR documents.</li>
+                        <li>RAG-based verification for complex queries.</li>
+                        <li>Automatic Template Detection.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">Conclusion</div>
+                <div class="card-body">
+                    Successfully developed a modular LLM-based verification system. It significantly reduces manual effort and demonstrates the practical use of <strong>Multimodal LLMs</strong> in defense documentation.
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">References</div>
+                <div class="card-body" style="font-size: 0.85rem;">
+                    1. Docling v2 (2025)<br>
+                    2. Gemma 3 Technical Report<br>
+                    3. Chain-of-Thought Prompting<br>
+                    4. READoc Benchmark<br>
+                    5. Check-Eval Framework
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
